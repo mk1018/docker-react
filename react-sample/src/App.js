@@ -1,5 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
+// import Header from './components/Header'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import PageHome from './components/PageHome'
+import PageThread from './components/PageThread'
+import PageNotFound from './components/PageNotFound'
 
 function App() {
   return (
