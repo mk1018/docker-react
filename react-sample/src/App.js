@@ -2,22 +2,25 @@ import logo from './logo.svg';
 import React from 'react';
 import './App.css';
 // import Header from './components/Header'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import PageHome from './components/PageHome'
 import PageThread from './components/PageThread'
 import PageNotFound from './components/PageNotFound'
+import Language from './components/Language'
 
 class App extends React.Component {
   render() {
     return (
-      <div>
-        {/* <h1>タグを用いて、「Hello World」と表示してください */}
-        <h1>Hello World</h1>
-
-        {/* <p>タグを用いて、「一緒にReactを学びましょう！」と表示してください */}
-        <p>一緒にReactを学びましょう！</p>
-        <PageHome />
-      </div>
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <PageHome />
+          </Route>
+          <Route path="/language">
+            <Language />
+          </Route>
+        </Switch>
+      </Router>
     );
   }
   // return (
