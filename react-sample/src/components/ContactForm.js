@@ -7,20 +7,30 @@ class ContactForm extends React.Component {
       isSubmitted: false,
       email: '',
       hasEmailError: false,
+      /* contentとhasContentErrorというstateを追加してください */
+      content: '',
+      hasContentError: false,
+      
     };
   }
 
   handleEmailChange(event) {
     const inputValue = event.target.value;
-    /* 定数isEmptyを定義し、入力チェックの結果を代入してください */
     const isEmpty = inputValue === '';
-    
-    /* hasEmailErrorを更新してください */
     this.setState({
       email: inputValue,
-      hasEmailError: isEmpty
+      hasEmailError: isEmpty,
     });
-    
+  }
+
+  /* handleContentChangeという名前のメソッドを定義してください */
+  handleContentChange(event) {
+    const inputValue = event.target.value;
+    const isEmpty = inputValue === '';
+    this.setState({
+      content: inputValue,
+      hasContentError: isEmpty,
+    });
   }
 
   handleSubmit() {
@@ -36,7 +46,19 @@ class ContactForm extends React.Component {
         </p>
       );
     }
-
+    
+    /* 変数contentErrorTextを定義してください */
+    let contentErrorText;
+    
+    /* hasContentErrorを条件にしたif文を作成してください */
+    if (this.state.hasContentError) {
+      contentErrorText = (
+        <p className='contact-message-error'>
+          お問い合わせ内容を入力してください
+        </p>
+        );  
+    }
+    
     let contactForm;
     if (this.state.isSubmitted) {
       contactForm = (
@@ -46,7 +68,7 @@ class ContactForm extends React.Component {
       );
     } else {
       contactForm = (
-        <form onSubmit={() => {this.handleSubmit()}}>
+        <form onSubmit={() => {this.handleSubmit()}} >
           <p>メールアドレス（必須）</p>
           <input
             value={this.state.email}
@@ -54,7 +76,14 @@ class ContactForm extends React.Component {
           />
           {emailErrorText}
           <p>お問い合わせ内容（必須）</p>
-          <textarea />
+          {/* stateのvalueの値と、onChangeイベントを追加してください */}
+          <textarea
+            value={this.state.content}
+            onChange={(event) => {this.handleContentChange(event)}}
+          />
+          {/* contentErrorTextを表示してください */}
+          {contentErrorText}
+          
           <input
             type='submit'
             value='送信'
@@ -62,7 +91,7 @@ class ContactForm extends React.Component {
         </form>
       );
     }
-
+    
     return (
       <div className='contact-form'>
         {contactForm}
