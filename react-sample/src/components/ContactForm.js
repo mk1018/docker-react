@@ -10,7 +10,6 @@ class ContactForm extends React.Component {
       /* contentとhasContentErrorというstateを追加してください */
       content: '',
       hasContentError: false,
-      
     };
   }
 
@@ -46,19 +45,19 @@ class ContactForm extends React.Component {
         </p>
       );
     }
-    
+
     /* 変数contentErrorTextを定義してください */
     let contentErrorText;
-    
+
     /* hasContentErrorを条件にしたif文を作成してください */
     if (this.state.hasContentError) {
       contentErrorText = (
         <p className='contact-message-error'>
           お問い合わせ内容を入力してください
         </p>
-        );  
+        );
     }
-    
+
     let contactForm;
     if (this.state.isSubmitted) {
       contactForm = (
@@ -83,7 +82,7 @@ class ContactForm extends React.Component {
           />
           {/* contentErrorTextを表示してください */}
           {contentErrorText}
-          
+
           <input
             type='submit'
             value='送信'
@@ -91,7 +90,7 @@ class ContactForm extends React.Component {
         </form>
       );
     }
-    
+
     return (
       <div className='contact-form'>
         {contactForm}
