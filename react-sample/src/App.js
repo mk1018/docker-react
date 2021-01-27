@@ -7,6 +7,7 @@ import PageHome from './components/PageHome'
 import PageThread from './components/PageThread'
 import PageNotFound from './components/PageNotFound'
 import Language from './components/Language'
+import ContactForm from './components/ContactForm'
 
 class App extends React.Component {
   render() {
@@ -18,6 +19,7 @@ class App extends React.Component {
           </Route>
           <Route path="/language">
             <Language />
+            <ContactForm />
           </Route>
         </Switch>
       </Router>
