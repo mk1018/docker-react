@@ -23,6 +23,9 @@ class App extends React.Component {
             <ContactForm />
             {/* <PersonList /> */}
           </Route>
+          <Route path="/personList">
+            <PersonList />
+          </Route>
         </Switch>
       </Router>
     );
